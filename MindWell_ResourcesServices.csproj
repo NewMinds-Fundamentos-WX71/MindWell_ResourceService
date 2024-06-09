@@ -9,26 +9,13 @@
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="13.0.1" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.4.24267.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0-preview.4.24267.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.3.24172.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0-preview.3.24172.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="2.0.0-preview1-final" />
-        <PackageReference Include="Npgsql" Version="8.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0-preview.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resource\Controllers\" />
-      <Folder Include="Resource\Domain\Communication\" />
-      <Folder Include="Resource\Domain\Models\" />
-      <Folder Include="Resource\Domain\Repositories\" />
-      <Folder Include="Resource\Domain\Services\" />
-      <Folder Include="Resource\Mapping\" />
-      <Folder Include="Resource\Persistence\Repositories\" />
-      <Folder Include="Resource\Resources\GET\" />
-      <Folder Include="Resource\Resources\POST\" />
-      <Folder Include="Resource\Resources\UPDATE\" />
-      <Folder Include="Resource\Services\" />
-      <Folder Include="Shared\Persistence\" />
     </ItemGroup>
 
 </Project>
