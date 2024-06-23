@@ -9,6 +9,8 @@ public class AppDbContext : DbContext
     public DbSet<Resource.Domain.Models.Resource> Resources { get; set; }
     public DbSet<UserResource> UserResources { get; set; }
     
+    public DbSet<FetchHistory> FetchHistories { get; set; }
+    
     public AppDbContext(DbContextOptions options) : base(options)
     {
     }
@@ -27,11 +29,24 @@ public class AppDbContext : DbContext
         builder.Entity<UserResource>().HasKey(p=>p.Id);
         builder.Entity<UserResource>().Property(p=>p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<UserResource>().Property(p=>p.User_Id).IsRequired();
+        
+        builder.Entity<FetchHistory>().ToTable("FetchHistories");
+        builder.Entity<FetchHistory>().HasKey(p=>p.Id);
+        builder.Entity<FetchHistory>().Property(p=>p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<FetchHistory>().Property(p=>p.IsFetched).IsRequired();
 
         builder.Entity<Resource.Domain.Models.Resource>()
             .HasMany(p => p.UserResources)
             .WithOne(p => p.Resource)
             .HasForeignKey(p => p.Resource_Id);
+
+        builder.Entity<FetchHistory>().HasData(
+            new FetchHistory
+            {
+                Id = 1,
+                IsFetched = false
+            }
+        );
         
         // Apply Snake Case Naming Convention
         builder.UseSnakeCaseNamingConvention();

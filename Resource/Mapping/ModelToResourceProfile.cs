@@ -10,5 +10,6 @@ public class ModelToResourceProfile : Profile
     {
         CreateMap<Domain.Models.Resource, ResourceResource>();
         CreateMap<UserResource, UserResourceResource>();
+        CreateMap<FetchHistory, FetchHistoryResource>();
     }
 }

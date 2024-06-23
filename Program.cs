@@ -32,6 +32,8 @@ builder.Services.AddScoped<IResourceRepository, ResourceRepository>();
 builder.Services.AddScoped<IResourceService, ResourceService>();
 builder.Services.AddScoped<IUserResourceRepository, UserResourceRepository>();
 builder.Services.AddScoped<IUserResourceService, UserResourceService>();
+builder.Services.AddScoped<IFetchHistoryRepository, FetchHistoryRepository>();
+builder.Services.AddScoped<IFetchHistoryService, FetchHistoryService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // AutoMapper Configuration
