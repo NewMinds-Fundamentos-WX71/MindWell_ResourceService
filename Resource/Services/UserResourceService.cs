@@ -1,3 +1,4 @@
+using MindWell_ResourcesServices.Resource.Domain.Communication;
 using MindWell_ResourcesServices.Resource.Domain.Models;
 using MindWell_ResourcesServices.Resource.Domain.Repositories;
 using MindWell_ResourcesServices.Resource.Domain.Services;
@@ -34,5 +35,12 @@ public class UserResourceService : IUserResourceService
     public async Task<IEnumerable<UserResource>> ListAllUserResourcesByResourceIdAsync(int resourceId)
     {
         return await _userResourceRepository.GetAllUserResourcesByResourceIdAsync(resourceId);
+    }
+
+    public async Task<UserResourceResponse> SaveAsync(UserResource userResource)
+    {
+        await _userResourceRepository.AddAsync(userResource);
+        await _unitOfWork.CompleteAsync();
+        return new UserResourceResponse(userResource);
     }
 }

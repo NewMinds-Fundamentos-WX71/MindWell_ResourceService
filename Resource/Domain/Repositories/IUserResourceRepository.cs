@@ -8,4 +8,5 @@ public interface IUserResourceRepository
     Task<UserResource> GetByIdAsync(int id);
     Task<IEnumerable<UserResource>> GetAllUserResourcesByUserIdAsync(int id);
     Task<IEnumerable<UserResource>> GetAllUserResourcesByResourceIdAsync(int id);
+    Task AddAsync(UserResource userResource);
 }

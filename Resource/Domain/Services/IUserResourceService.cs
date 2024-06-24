@@ -1,3 +1,5 @@
+using MindWell_ResourcesServices.Resource.Domain.Communication;
+
 namespace MindWell_ResourcesServices.Resource.Domain.Services;
 
 public interface IUserResourceService
@@ -6,4 +8,5 @@ public interface IUserResourceService
     Task<Domain.Models.UserResource> GetUserResourceById(int id);
     Task<IEnumerable<Domain.Models.UserResource>> ListAllUserResourcesByUserIdAsync(int userId);
     Task<IEnumerable<Domain.Models.UserResource>> ListAllUserResourcesByResourceIdAsync(int resourceId);
+    Task<UserResourceResponse> SaveAsync(Domain.Models.UserResource userResource);
 }

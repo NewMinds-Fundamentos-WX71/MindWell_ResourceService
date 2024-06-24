@@ -35,4 +35,9 @@ public class UserResourceRepository : BaseRepository, IUserResourceRepository
             .Where(userResource => userResource.Resource_Id == id)
             .ToListAsync();
     }
+
+    public async Task AddAsync(UserResource userResource)
+    {
+        await _context.UserResources.AddAsync(userResource);
+    }
 }

@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MindWell_ResourcesServices.Resource.Domain.Services;
 using MindWell_ResourcesServices.Resource.Resources.GET;
+using MindWell_ResourcesServices.Resource.Resources.POST;
+using MindWell_ResourcesServices.Shared.Extensions;
 
 namespace MindWell_ResourcesServices.Resource.Controllers;
 
@@ -48,5 +50,22 @@ public class UsersResourcesController : ControllerBase
         var resources = await _userResourceService.ListAllUserResourcesByResourceIdAsync(resourceId);
         var resourcesResource = _mapper.Map<IEnumerable<Domain.Models.UserResource>, IEnumerable<UserResourceResource>>(resources);
         return resourcesResource;
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> PostAsync([FromBody] SaveUserResourceResource resource)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState.GetErrorMessages());
+        
+        var userResource = _mapper.Map<SaveUserResourceResource, Domain.Models.UserResource>(resource);
+        var result = await _userResourceService.SaveAsync(userResource);
+        
+        if (!result.Success)
+            return BadRequest(result.Message);
+
+        var userResourceResource = _mapper.Map<Domain.Models.UserResource, UserResourceResource>(result.Resource);
+        
+        return Ok(userResourceResource);
     }
 }
